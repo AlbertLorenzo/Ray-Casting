@@ -14,6 +14,7 @@ class Ray {
     }
 
     // Calcula la intersección entre dos rectas 
+    // Source: https://en.wikipedia.org/wiki/Line%E2%80%93line_intersection
     cast(wall) {
         const x1 = wall.a.x
         const y1 = wall.a.y
@@ -27,6 +28,7 @@ class Ray {
 
         const den = (x1 - x2) * (y3 - y4) - (y1 - y2) * (x3 - x4)
 
+        // si el denominador es igual a 0 es porque las rectas son paralelas y nunca van a chocar
         if (den === 0) {
             return
         }
@@ -41,7 +43,7 @@ class Ray {
             pt.y = y1 + t * (y2 - y1)
             return pt
         } else {
-            // si no cumple dicha condición es porque las rectas son paralelas y nunca van a chocar
+            // No colisiona
             return
         }
     }
